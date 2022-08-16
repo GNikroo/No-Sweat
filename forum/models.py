@@ -31,3 +31,20 @@ class Post(models.Model):
     def number_of_likes(self):
         '''generates the number of likes per post'''
         return self.likes.count()
+
+
+class Comment(models.Model):
+    '''comment details'''
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        '''meta class sets ascending order'''
+        ordering = ['created_on']
+
+    def __str__(self):
+        return f"{self.body} commented by {self.name}"
