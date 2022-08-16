@@ -15,6 +15,15 @@ body {
     color: #118AB2;
 }
 
+.nav-link-white {
+    color: #F9FAFC;
+}
+
+.a-right {
+    text-align: right;
+    text-decoration: none;
+}
+
 .pink {
     color: #f931a0b3;
 }
@@ -31,7 +40,7 @@ body {
     height: auto;
 } 
 
-.card {
+.no-border {
     border: none;
     background-color: transparent;
 }

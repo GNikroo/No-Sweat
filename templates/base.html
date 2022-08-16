@@ -23,7 +23,7 @@
   <!-- Navigation -->
   <nav class="navbar green">
     <div class="container-fluid">     
-      <a class="nav-link navbar-brand" data-value="home" href="{% url 'home' %}">No Sweat!</a>
+      <a class="nav-link-white navbar-brand" data-value="home" href="{% url 'home' %}">No Sweat!</a>
       
       <button class="navbar-toggler position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa-solid fa-bars"></i></span></button>
       </button>
@@ -32,21 +32,21 @@
 
         <ul class="navbar-nav nav">
           <li class="nav-item active">
-            <a class="nav-link a-right" data-value="recent-posts" href="#">On Topic</a>
+            <a class="nav-link-white a-right" data-value="recent-posts" href="#">On Topic</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link a-right" data-value="random-post"href="#">Get set... Go!</a>
+            <a class="nav-link-white a-right" data-value="random-post"href="#">Get set... Go!</a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link a-right" href="{% url 'account_logout' %}">Logout</a>
+            <a class="nav-link-white a-right" href="{% url 'account_logout' %}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link a-right" href="{% url 'account_signup' %}">Sign Up</a>
+            <a class="nav-link-white a-right" href="{% url 'account_signup' %}">Sign Up</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link a-right" href="{% url 'account_login' %}">Login</a>
+            <a class="nav-link-white a-right" href="{% url 'account_login' %}">Login</a>
           </li>
           {% endif %}
         </ul>

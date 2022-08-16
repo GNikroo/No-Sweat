@@ -31,7 +31,7 @@
         </div>
 
         <div class="row">
-            <div class="col card mb-4 mt-3">
+            <div class="col no-border mb-4 mt-3">
                 <div class="card-body">
                 {{ post.content | safe }}
                     <p class="card-text "></p>
@@ -72,7 +72,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8 card mb-4  mt-3 ">
+            <div class="col-6 col-md-8 no-border mb-4  mt-3 ">
                 <h3>Comments:</h3>
                 <div class="card-body">
                     {% for comment in comments %}
@@ -88,7 +88,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="col-md-4 no-border mb-4  mt-3 ">
                 <div class="card-body">
                     {% if commented %}
                     <div class="alert alert-success" role="alert">
