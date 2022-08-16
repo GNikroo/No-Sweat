@@ -52,40 +52,6 @@
             
         </div>
 
-                <div class="col-12 mt-3">
-            <div class="row justify-content-center">
-            {% for post in post_list %}
-                <div class="col-md-auto">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                                <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                    <img src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg"  height="250">
-                                {% else %}
-                                    <img src=" {{ post.featured_image.url }} " height="250">
-                                {% endif %}
-                                </div>
-                                <h4 class="card-title">{{ post.title }}</h4>
-                                <p class="author-highlight text-muted h6">{{ post.author }}</p>
-                                <p class="text-muted h6">{{ post.created_on }}</p>
-                                <p class="card-text">{{ post.excerpt }}</p>
-                            </a>
-                                                        <hr/>
-                            <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i class="fa-regular fa-heart"></i> {{ post.comments.count }} <i class="fa-regular fa-comment"></i></p>
-                        </div>
-                        
-                    </div>
-                </div>
-            {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row justify-content-center">
-            {% endif %}
-            {% endfor %}
-            </div>
-            
-        </div>
-
     </div>
     {% if is_paginated %}
     <nav aria-label="Page navigation">
