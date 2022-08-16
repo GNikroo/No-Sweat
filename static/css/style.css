@@ -15,8 +15,16 @@ body {
     color: #118AB2;
 }
 
+.pink {
+    color: #f931a0b3;
+}
+
 .green {
     background-color: #11c697;
+}
+
+.orange {
+    color: #f4941d;
 }
 
 .tall {
@@ -65,4 +73,38 @@ body {
 
 .post-col {
     width: 500px;
+}
+
+.btn-signup {
+    background-color: #23BBBB;
+    color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #fff;
+    color: #23BBBB;
+} */
+
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: #445261;
+    text-decoration: underline;
+}
+
+.btn-border {
+    border: none;
+    background: transparent;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #f931a0b3;
+    background: transparent;
+    border: none;
 }
