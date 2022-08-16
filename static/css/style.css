@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,700;1,200;1,300;1,700&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #F9FAFC;
+}
+
+.no-sweat {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 6.4rem;
+    font-weight: 400;
+    color: #118AB2;
+}
+
+.green {
+    background-color: #11c697;
+}
+
+.tall {
+    height: auto;
+} 
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.image-container {
+    position: relative;
+}
+
+.post-image {
+    margin: 10px 0;
+    height: 300px;
+    width: auto;
+}
+
+.author-highlight {
+    text-transform: uppercase;
+    position: relative;
+    background-color: #ee4ba66b;
+}
+
+.post-link {
+    text-decoration: none;
+    color: #445261;
+}
+
+
+.post-link:hover,
+.page-link {
+    color: #f931a0b3;
+}
+
+.post-title {
+    color: #445261;
+}
+
+.left-col, .right-col {
+    max-width: 5%;
+}
+
+.post-col {
+    width: 500px;
+}
