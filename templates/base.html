@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="h-100">
+
+<head>
+  <title>No Sweat!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+
+  <!-- Bootstrap and CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+  
+  <!-- Icons and Google Fonts -->
+  <link rel="icon" type="image/x-icon" href="../static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/8495799700.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="d-flex flex-column h-100 main-bg">
+  
+  <!-- Navigation -->
+  <nav class="navbar green">
+    <div class="container-fluid">     
+      <a class="nav-link navbar-brand" data-value="home" href="{% url 'home' %}">No Sweat!</a>
+      
+      <button class="navbar-toggler position-relative" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fa-solid fa-bars"></i></span></button>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+
+        <ul class="navbar-nav nav">
+          <li class="nav-item active">
+            <a class="nav-link a-right" data-value="recent-posts" href="#">On Topic</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link a-right" data-value="random-post"href="#">Get set... Go!</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link a-right" href="#">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link a-right" href="#">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link a-right" href="#">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Messages container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+          {{ message | safe }}
+          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close">
+          </button>
+        </div>
+        {% endfor %} 
+      </div>
+    </div>
+  </div>
+
+    <main class="flex-shrink-0 main-bg">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 green">
+        <p class="m-0 text-center text-white">Copyright &copy; Gina Nikroo <script>document.write(new Date().getFullYear())</script></p>
+        <p class="m-0 text-center text-white"><i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i></p>
+    </footer>
+
+    <!-- Message Alert Timeout -->
+    <script>
+      setTimeout(function() {
+        let messages = document.getElementById("msg");
+        let alert = new bootstrap.Alert(messages);
+        alert.close();
+      }, 3000);
+    </script> 
+</body>
+
+</html>
