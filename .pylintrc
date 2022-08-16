@@ -1,2 +1,2 @@
 [pylint]
-disable = no-member, broad-except, invalid-name #, invalid-str-returned
+disable = no-member, broad-except, invalid-name, invalid-str-returned
