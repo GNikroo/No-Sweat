@@ -94,6 +94,10 @@ body {
     width: 500px;
 }
 
+.btn-outline-info {
+
+}
+
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
@@ -103,7 +107,7 @@ body {
 .btn-signup:active {
     background-color: #fff;
     color: #23BBBB;
-} */
+}
 
 .link {
     color: #23BBBB;

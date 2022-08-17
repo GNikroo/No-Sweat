@@ -3,13 +3,15 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+from django.utils.text import slugify
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 
 
 class Search(View):
-
+    """..."""
     def get(self, request):
+        """..."""
         query = request.GET.get('query', '')
 
         if query:
@@ -32,8 +34,45 @@ class PostList(generic.ListView):
     '''a list view of six posts per page'''
     model = Post
     queryset = Post.objects.filter(status=1).order_by('-created_on')
-    template_name = 'index.html'
+    template_name = "index.html"
     paginate_by = 6
+
+
+class AddPost(View):
+    '''...'''
+    def get(self, request, *args, **kwargs):
+        '''...'''
+        post_form = PostForm()
+        return render(
+            request,
+            'add_post.html',
+            {
+                'post_form': post_form,
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+        """..."""
+        post_form = PostForm(request.POST, request.FILES)
+        if post_form.is_valid():
+            post_form.instance.email = request.user.email
+            post_form.instance.name = request.user.username
+            post_form.instance.status = 1
+            post_form.instance.author = request.user
+            post = post_form.save(commit=False)
+            post.slug = slugify(post.title)
+            post_form.post = post
+            post_form.save()
+        else:
+            post_form = PostForm()
+
+        return render(
+            request,
+            "add_post.html",
+            {
+                "posted": True,
+            },
+        )
 
 
 class PostDetail(View):
@@ -54,7 +93,7 @@ class PostDetail(View):
                 "post": post,
                 "comments": comments,
                 "liked": liked,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
             },
         )
 
@@ -92,8 +131,9 @@ class PostDetail(View):
 
 
 class PostLike(View):
-
+    """..."""
     def post(self, request, slug):
+        """..."""
         post = get_object_or_404(Post, slug=slug)
         if post.likes.filter(id=request.user.id).exists():
             post.likes.remove(request.user)
