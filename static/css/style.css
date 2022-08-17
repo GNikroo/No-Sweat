@@ -76,6 +76,10 @@ body {
     color: #445261;
 }
 
+.invert-orange {
+    border-color: #f4941d;
+    background: transparent;
+}
 
 .post-link:hover,
 .page-link {
@@ -94,19 +98,22 @@ body {
     width: 500px;
 }
 
-.btn-outline-info {
-
-}
-
-.btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
-}
-
-.btn-signup:hover,
-.btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+.btn-main {
+    background-color: #11c697;
+    border: none;
+    color: white;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 .link {
