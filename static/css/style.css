@@ -54,9 +54,9 @@ body {
 }
 
 .post-image {
-    margin: 10px 0;
     height: 300px;
-    width: auto;
+    width: 100%;
+    object-fit: cover;
 }
 
 .thumbnail {
