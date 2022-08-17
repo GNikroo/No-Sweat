@@ -2,8 +2,30 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from .models import Post
 from .forms import CommentForm
+
+
+class Search(View):
+
+    def get(self, request):
+        query = request.GET.get('query', '')
+
+        if query:
+            posts = Post.objects.all().filter(Q(title__icontains=query) | Q(content__icontains=query)) # noqa
+        else:
+            posts = []
+
+        return render(
+            request,
+            "index.html",
+            {
+                "query": query,
+                "posts": posts,
+                "searched": True,
+            },
+        )
 
 
 class PostList(generic.ListView):
