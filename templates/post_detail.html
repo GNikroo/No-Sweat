@@ -17,6 +17,12 @@
                     {{ post.title }}
                 </h1>
                 <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
+                {% if post.author == user %}
+                <div class="mt-1">
+                    <a class="btn-post btn-main" href="#">Edit</a>
+                    <a class="btn-post btn btn-danger" href="#">Delete</a>
+                </div>
+                {% endif %}
                 <div class="mt-3">
                     {{ post.content | safe }}
                 </div>
@@ -53,11 +59,18 @@
             <div class="card-body">
                 {% for comment in comments %}
                 <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
+                    <p class="pink font-weight-bold">
                         {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
+                        {% if comment.name == user.username %}
+                        <span class="mt-1">
+                            <a class="btn-post btn-main" href="#">Edit</a>
+                            <a class="btn-post btn btn-danger" href="#">Delete</a>
+                        </span>
+                        {% endif %}
+                        <span class="text-muted font-weight-normal">
                             {{ comment.created_on }}
-                        </span> wrote:
+                        </span> 
+                        <span class="pink">wrote:</span>
                     </p>
                     {{ comment.body }}
                 </div>
@@ -76,7 +89,7 @@
 
                 {% if user.is_authenticated %}
                 <h3>Leave a comment:</h3>
-                <p>Posting as: {{ user.username }}</p>
+                <p>Posting as: <span class="blue">{{ user.username }}</span></p>
                 <form method="post" style="margin-top: 1.3em;">
                     {{ comment_form | crispy }}
                     {% csrf_token %}                    
