@@ -6,16 +6,15 @@
         <div class="card-body">
             {% if posted %}
             <div class="alert alert-success" role="alert">
-                You've successfully made a post!
+                Your post has been updated.
             </div>
             {% else %}
-            <h3>Add an entry:</h3>
-            <p>Posting as: <span class="pink">{{ user.username }}</span></p>
-            <form method="POST" style="margin-top: 1.3em;" enctype='multipart/form-data'>
-                {{ post_form | crispy }}
+
+            <form method="POST" enctype='multipart/form-data'>
+                {{ update_form | crispy }}
                 {% csrf_token %}
 
-                <p class="mt-1"><button type="submit" class="btn-main">Submit</button></p>
+                <p class="mt-1"><button class="btn-main">Update</button></p>
             </form>
             {% endif %}
         </div>
