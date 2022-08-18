@@ -38,6 +38,27 @@ class PostList(generic.ListView):
     paginate_by = 6
 
 
+class UserPostList(View):
+    '''a list view of six posts per page'''
+    def get(self, request):
+        queryset = Post.objects.all()
+        
+        if queryset:
+            posts = Post.objects.filter(author=request.user.id).order_by('-created_on') # noqa
+
+        else:
+            posts = []
+
+        return render(
+            request,
+            "user_profile.html",
+            {
+                "queryset": queryset,
+                "posts": posts,
+            }
+        )
+
+
 class AddPost(View):
     '''...'''
     def get(self, request, *args, **kwargs):
@@ -55,8 +76,6 @@ class AddPost(View):
         """..."""
         post_form = PostForm(request.POST, request.FILES)
         if post_form.is_valid():
-            post_form.instance.email = request.user.email
-            post_form.instance.name = request.user.username
             post_form.instance.status = 1
             post_form.instance.author = request.user
             post = post_form.save(commit=False)
@@ -110,7 +129,6 @@ class PostDetail(View):
 
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
-            comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()

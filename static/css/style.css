@@ -12,7 +12,6 @@ body {
     font-family: 'Shadows Into Light', cursive;
     font-size: 6.4rem;
     font-weight: 400;
-    color: #118AB2;
 }
 
 .nav-link-white {
@@ -66,6 +65,7 @@ body {
 }
 
 .author-highlight {
+    font-size: 0.85rem;
     text-transform: uppercase;
     position: relative;
     background-color: #f4941d6b;

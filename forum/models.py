@@ -18,8 +18,7 @@ class Post(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    likes = models.ManyToManyField(
-        User, related_name='forum_likes', blank=True)
+    likes = models.ManyToManyField(User, related_name='forum_likes', blank=True)
 
     class Meta:
         '''meta class sets descending order'''

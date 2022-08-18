@@ -6,15 +6,13 @@
 <!-- Title and Search Bar -->
 <div class="text-center py-5 container">
     <div class="landing">
-        <h1 class="blue no-sweat">No Sweat!</h1>
-        <p class="lead">A place for beginners, experts, and everyone in-between to share fitness tips and encouragement.
-        </p>
+        <h3 class="blue py-3"> {{ user.username }}</h3>
         {% if user.is_authenticated %}
         <div>
             <a class="btn-post btn-main" href="{% url 'add_post' %}">Add a post</a>
         </div>
         {% endif %}
-        
+
         <!-- Search results -->
 
         {% if searched %}
@@ -26,7 +24,8 @@
                     <a href="{% url 'post_detail' post.slug %}" class="post-link">
                         <div class="image-container">
                             {% if "placeholder" in post.featured_image.url %}
-                            <img class="thumbnail" src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
+                            <img class="thumbnail"
+                                src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
                             {% else %}
                             <img class="thumbnail" src=" {{ post.featured_image.url }} ">
                             {% endif %}
@@ -39,7 +38,7 @@
                     <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
                             class="pink fa-regular fa-heart"></i>
                         {{ post.comments.count }} <i class="blue fa-regular fa-comment"></i>
-                    </p>                    
+                    </p>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
                 <div>
@@ -49,7 +48,7 @@
                     <p>No entries matched your query...</p>
                     {% endfor %}
                 </div>
-        {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -58,16 +57,18 @@
     <div class="row">
 
         <!-- Post Columns -->
+        <hp class="h3">{{ post.author }}</p>
         <div class="col-12 mt-3">
             <div class="row justify-content-center">
-                {% for post in post_list %}
-                <div class="col-md-4 col-sm-12">
+                {% for post in posts %}
+                <div class="col-md-4 col-sm-12">                    
                     <div class="mb-4">
                         <div class="no-border card-body">
                             <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <div class="image-container">
                                     {% if "placeholder" in post.featured_image.url %}
-                                    <img class="thumbnail" src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
+                                    <img class="thumbnail"
+                                        src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
                                     {% else %}
                                     <img class="thumbnail" src=" {{ post.featured_image.url }} ">
                                     {% endif %}
