@@ -25,3 +25,17 @@ class PostForm(forms.ModelForm):
         widgets = {
             'bar': SummernoteInplaceWidget(),
         }
+
+
+class UpdateForm(forms.ModelForm):
+    """..."""
+    class Meta:
+        model = Post
+        fields = [
+            'title',
+            'featured_image',
+            'content',
+        ]
+        widgets = {
+            'bar': SummernoteInplaceWidget(),
+        }

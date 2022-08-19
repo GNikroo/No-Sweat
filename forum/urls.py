@@ -8,6 +8,8 @@ urlpatterns = [
     path('user_profile/', views.UserPostList.as_view(), name='user_profile'),  # noqa
     path('search/', views.Search.as_view(), name='search'),
     path('add_post/', views.AddPost.as_view(), name='add_post'),
+    path('<slug:slug>/update_post', views.UpdatePost.as_view(), name='update_post'), # noqa
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
+    path('<slug:slug>/delete_post', views.DeletePost.as_view(), name='delete_post'), # noqa
 ]

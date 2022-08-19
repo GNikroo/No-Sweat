@@ -1,11 +1,12 @@
 '''Views for No Sweat fitforum'''
 from django.shortcuts import render, get_object_or_404, reverse
+from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
 from .models import Post
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, UpdateForm
 
 
 class Search(View):
@@ -82,16 +83,69 @@ class AddPost(View):
             post.slug = slugify(post.title)
             post_form.post = post
             post_form.save()
+            messages.success(request, "Your post has been added!")
         else:
             post_form = PostForm()
+            messages.error(request, 'Invalid form submission.')
 
+        return HttpResponseRedirect('/user_profile')
+
+
+class UpdatePost(View):
+    '''...'''
+    def get(self, request, *args, **kwargs):
+        '''...'''
+        slug = kwargs.get('slug')
+        post_to_update = Post.objects.get(slug=slug)
+        update_form = UpdateForm(initial={
+            'title': post_to_update.title,
+            'featured_image': post_to_update.featured_image,
+            'content': post_to_update.content,
+        })
+        
         return render(
             request,
-            "add_post.html",
+            'update_post.html',
             {
-                "posted": True,
+                'update_form': update_form,
             },
         )
+
+    def post(self, request, *args, **kwargs):
+        """..."""
+        slug = kwargs.get('slug')
+        post_object = Post.objects.get(slug=slug)
+        update_form = UpdateForm(request.POST, instance=post_object)
+        if update_form.is_valid():
+            update_form.instance.author = request.user
+            post = update_form.save(commit=False)
+            post.slug = slugify(post.title)
+            update_form.post = post
+            update_form.save()
+            messages.success(request, "Your post has been updated!")
+        else:
+            update_form = UpdateForm()
+            messages.error(request, 'Invalid form submission.')
+
+        return HttpResponseRedirect('/user_profile')
+
+
+class DeletePost(View):
+    '''...'''
+    def get(self, request, *args, **kwargs):
+        '''...'''
+        return render(
+            request,
+            'delete_post.html',
+        )
+
+    def post(self, request, *args, **kwargs):
+        """..."""
+        slug = kwargs.get('slug')
+        post_to_delete = Post.objects.get(slug=slug)
+        post_to_delete.delete()
+        messages.success(request, 'Your post has been deleted.')
+        return HttpResponseRedirect('/user_profile')
 
 
 class PostDetail(View):

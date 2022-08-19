@@ -19,8 +19,8 @@
                 <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
                 {% if post.author == user %}
                 <div class="mt-1">
-                    <a class="btn-post btn-main" href="#">Edit</a>
-                    <a class="btn-post btn btn-danger" href="#">Delete</a>
+                    <a class="btn-post btn-main" href="{{ 'update_post' }}">Edit</a>
+                    <a class="btn-post btn btn-danger" href="{{ 'delete_post' }}">Delete</a>
                 </div>
                 {% endif %}
                 <div class="mt-3">
