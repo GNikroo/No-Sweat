@@ -115,7 +115,7 @@ class UpdatePost(View):
         """..."""
         slug = kwargs.get('slug')
         post_object = Post.objects.get(slug=slug)
-        update_form = UpdateForm(request.POST, instance=post_object)
+        update_form = UpdateForm(request.POST, request.FILES, instance=post_object) # noqa
         if update_form.is_valid():
             update_form.instance.author = request.user
             post = update_form.save(commit=False)
