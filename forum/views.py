@@ -5,8 +5,8 @@ from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.utils.text import slugify
-from .models import Post
-from .forms import CommentForm, PostForm, UpdateForm
+from .models import Post, Comment
+from .forms import CommentForm, PostForm, UpdateForm, UpdateCommentForm
 
 
 class Search(View):
@@ -145,6 +145,42 @@ class DeletePost(View):
         post_to_delete = Post.objects.get(slug=slug)
         post_to_delete.delete()
         messages.success(request, 'Your post has been deleted.')
+        return HttpResponseRedirect('/user_profile')
+
+
+class UpdateComment(View):
+    '''...'''
+    def get(self, request, *args, **kwargs):
+        '''...'''
+        comment_id = kwargs.get('pk')
+        comment_obj = Comment.objects.get(pk=comment_id)
+        update_comment_form = UpdateCommentForm(initial={
+            'body': comment_obj.body,
+        })
+        
+        return render(
+            request,
+            'update_comment.html',
+            {
+                'update_comment_form': update_comment_form,
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+        """..."""
+        comment_id = kwargs.get('pk')
+        comment_obj = Comment.objects.get(pk=comment_id)
+        update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj) # noqa
+        if update_comment_form.is_valid():
+            update_comment_form.instance.author = request.user
+            comment_obj = update_comment_form.save(commit=False)
+            update_comment_form.comment = comment_obj
+            update_comment_form.save()
+            messages.success(request, "Your comment has been updated!")
+        else:
+            update_comment_form = UpdateCommentForm()
+            messages.error(request, 'Invalid form submission.')
+
         return HttpResponseRedirect('/user_profile')
 
 

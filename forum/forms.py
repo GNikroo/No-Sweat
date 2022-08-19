@@ -39,3 +39,15 @@ class UpdateForm(forms.ModelForm):
         widgets = {
             'bar': SummernoteInplaceWidget(),
         }
+
+
+class UpdateCommentForm(forms.ModelForm):
+    """..."""
+    class Meta:
+        model = Comment
+        fields = [
+            'body',
+        ]
+        widgets = {
+            'bar': SummernoteInplaceWidget(),
+        }
