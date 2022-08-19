@@ -64,7 +64,7 @@
                         {% if comment.name == user.username %}
                         <span class="mt-1">
                             <a class="btn-post btn-main" href="{% url 'update_comment' post.slug comment.id %}">Edit</a>
-                            <a class="btn-post btn btn-danger" href="#">Delete</a>
+                            <a class="btn-post btn btn-danger" href="{% url 'delete_comment' post.slug comment.id %}">Delete</a>
                         </span>
                         {% endif %}
                         <span class="text-muted font-weight-normal">

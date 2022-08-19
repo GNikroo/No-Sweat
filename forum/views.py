@@ -184,6 +184,24 @@ class UpdateComment(View):
         return HttpResponseRedirect('/user_profile')
 
 
+class DeleteComment(View):
+    '''...'''
+    def get(self, request, *args, **kwargs):
+        '''...'''
+        return render(
+            request,
+            'delete_comment.html',
+        )
+
+    def post(self, request, *args, **kwargs):
+        """..."""
+        comment_id = kwargs.get('pk')
+        comment_to_delete = Comment.objects.get(pk=comment_id)
+        comment_to_delete.delete()
+        messages.success(request, 'Your comment has been deleted.')
+        return HttpResponseRedirect('/user_profile')
+
+
 class PostDetail(View):
     '''shows the user important post details'''
 

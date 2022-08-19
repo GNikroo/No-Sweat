@@ -13,4 +13,5 @@ urlpatterns = [
     path('like/<slug:slug>', views.PostLike.as_view(), name='post_like'),
     path('<slug:slug>/delete_post', views.DeletePost.as_view(), name='delete_post'), # noqa
     path('<slug:slug>/<int:pk>/update_comment', views.UpdateComment.as_view(), name='update_comment'), # noqa
+    path('<slug:slug>/<int:pk>/delete_comment', views.DeleteComment.as_view(), name='delete_comment'), # noqa
 ]
