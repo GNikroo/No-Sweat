@@ -81,11 +81,6 @@
     <div class="row">
         <div class="col-md-8 no-border my-3 mt-3 mx-auto">
             <div class="card-body">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    You've successfully added a comment.
-                </div>
-                {% else %}
 
                 {% if user.is_authenticated %}
                 <h3>Leave a comment:</h3>
@@ -95,7 +90,6 @@
                     {% csrf_token %}                    
                     <p class="mt-1"><button type="submit" class="btn-main">Submit</button></p>
                 </form>
-                {% endif %}
                 {% endif %}
             </div>
         </div>
