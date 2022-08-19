@@ -51,7 +51,7 @@
           <!-- Nav links for authenticated users -->
           {% if user.is_authenticated %}
           <li class="nav-item active">
-            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">Your profile</a>
+            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">View your profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-white a-right" href="{% url 'account_logout' %}">Logout</a>
