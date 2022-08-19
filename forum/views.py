@@ -168,6 +168,7 @@ class UpdateComment(View):
 
     def post(self, request, *args, **kwargs):
         """..."""
+        slug = kwargs.get('slug')
         comment_id = kwargs.get('pk')
         comment_obj = Comment.objects.get(pk=comment_id)
         update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj) # noqa
@@ -181,7 +182,7 @@ class UpdateComment(View):
             update_comment_form = UpdateCommentForm()
             messages.error(request, 'Invalid form submission.')
 
-        return HttpResponseRedirect('/user_profile')
+        return HttpResponseRedirect(f"/{slug}")
 
 
 class DeleteComment(View):
@@ -195,11 +196,12 @@ class DeleteComment(View):
 
     def post(self, request, *args, **kwargs):
         """..."""
+        slug = kwargs.get('slug')
         comment_id = kwargs.get('pk')
         comment_to_delete = Comment.objects.get(pk=comment_id)
         comment_to_delete.delete()
         messages.success(request, 'Your comment has been deleted.')
-        return HttpResponseRedirect('/user_profile')
+        return HttpResponseRedirect(f'/{slug}')
 
 
 class PostDetail(View):
