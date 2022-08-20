@@ -77,7 +77,6 @@ class AddPost(View):
         """..."""
         post_form = PostForm(request.POST, request.FILES)
         if post_form.is_valid():
-            post_form.instance.status = 1
             post_form.instance.author = request.user
             post = post_form.save(commit=False)
             post.slug = slugify(post.title)
@@ -239,7 +238,6 @@ class PostDetail(View):
 
         if comment_form.is_valid():
             comment_form.instance.name = request.user.username
-            comment_form.instance.email = request.user.email
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
