@@ -16,7 +16,7 @@ class Search(View):
         query = request.GET.get('query', '')
 
         if query:
-            posts = Post.objects.all().filter(Q(title__icontains=query) | Q(content__icontains=query)) # noqa
+            posts = Post.objects.all().filter(Q(title__icontains=query) | Q(content__icontains=query))  # noqa
         else:
             posts = []
 
@@ -43,9 +43,9 @@ class UserPostList(View):
     '''a list view of six posts per page'''
     def get(self, request):
         queryset = Post.objects.all()
-        
+
         if queryset:
-            posts = Post.objects.filter(author=request.user.id).order_by('-created_on') # noqa
+            posts = Post.objects.filter(author=request.user.id).order_by('-created_on')  # noqa
 
         else:
             posts = []
@@ -102,7 +102,7 @@ class UpdatePost(View):
             'featured_image': post_to_update.featured_image,
             'content': post_to_update.content,
         })
-        
+
         return render(
             request,
             'update_post.html',
@@ -115,7 +115,7 @@ class UpdatePost(View):
         """..."""
         slug = kwargs.get('slug')
         post_object = Post.objects.get(slug=slug)
-        update_form = UpdateForm(request.POST, request.FILES, instance=post_object) # noqa
+        update_form = UpdateForm(request.POST, request.FILES, instance=post_object)  # noqa
         if update_form.is_valid():
             update_form.instance.author = request.user
             post = update_form.save(commit=False)
@@ -157,7 +157,7 @@ class UpdateComment(View):
         update_comment_form = UpdateCommentForm(initial={
             'body': comment_obj.body,
         })
-        
+
         return render(
             request,
             'update_comment.html',
@@ -171,7 +171,7 @@ class UpdateComment(View):
         slug = kwargs.get('slug')
         comment_id = kwargs.get('pk')
         comment_obj = Comment.objects.get(pk=comment_id)
-        update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj) # noqa
+        update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj)  # noqa
         if update_comment_form.is_valid():
             update_comment_form.instance.author = request.user
             comment_obj = update_comment_form.save(commit=False)
