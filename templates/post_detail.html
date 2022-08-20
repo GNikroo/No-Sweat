@@ -7,10 +7,9 @@
             <div class="my-3 justify-content-center">
                 <div>
                     {% if "placeholder" in post.featured_image.url %}
-                    <img class="post-image rounded mx-auto d-block"
-                        src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
+                    <img class="post-image rounded mx-auto d-block" alt="default photo of colorful kettlebells" src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
                     {% else %}
-                    <img class="post-image rounded mx-auto d-block" src=" {{ post.featured_image.url }} ">
+                    <img class="post-image rounded mx-auto d-block" alt="user uploaded image" src=" {{ post.featured_image.url }} ">
                     {% endif %}
                 </div>
                 <h1 class="post-title">
