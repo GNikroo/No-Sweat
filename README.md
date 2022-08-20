@@ -147,6 +147,7 @@ User Stories: Acceptance Criteria: Implementation
     * As a **Site User** I can **create draft posts** so that **I can finish writing the content later**. 
     * As a **Site User** I can **search by user profile** so that **I can connect to users I am interested in**. 
     * As a **Site User** I can **share a post** so that **others can access a post**.
+    * As a **Site User** I can **register and login with a social media account** so that **I don't have to keep track of multiple plasswords or worry about account security**.
 
 ### Skeleton
 * Wireframes
@@ -232,7 +233,7 @@ Once finished, a registered user can:
 ### Bugs
 * A number of bugs were found during production and resolved before deployment.
 * Following deployment:
-    * A bug has been found when attempting to retrieve a forgotten password. Fixing the bug is ongoing.
+    * A bug has been found when attempting to retrieve a forgotten password. Removed the broken link and will include it in future additional functionality.
     * CSS failed to load and produced error: MIME type ('text/html') is not a supported stylesheet MIME type. After some research I had turned debug on while fixing some CSS and redirects. I pushed the app without changing debug back to False. Once I did so, the CSS loaded as expected.
 
 ## Deployment  
