@@ -149,7 +149,7 @@ class DeletePost(View):
 
 class UpdateComment(View):
     '''...'''
-    def get(self, request, *args, **kwargs):
+    def get(self, request, **kwargs):
         '''...'''
         comment_id = kwargs.get('pk')
         comment_obj = Comment.objects.get(pk=comment_id)
@@ -165,18 +165,19 @@ class UpdateComment(View):
             },
         )
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request, **kwargs):
         """..."""
         slug = kwargs.get('slug')
         comment_id = kwargs.get('pk')
         comment_obj = Comment.objects.get(pk=comment_id)
         update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj)  # noqa
         if update_comment_form.is_valid():
-            update_comment_form.instance.author = request.user
-            comment_obj = update_comment_form.save(commit=False)
-            update_comment_form.comment = comment_obj
-            update_comment_form.save()
-            messages.success(request, "Your comment has been updated!")
+            if comment_obj.owner == request.user:
+                update_comment_form.instance.owner = request.user
+                comment_obj = update_comment_form.save(commit=False)
+                update_comment_form.comment = comment_obj
+                update_comment_form.save()
+                messages.success(request, "Your comment has been updated!")
         else:
             update_comment_form = UpdateCommentForm()
             messages.error(request, 'Invalid form submission.')

@@ -11,13 +11,12 @@ class Post(models.Model):
     '''post details'''
     title = models.CharField(max_length=29, unique=True)
     slug = models.SlugField(max_length=100, null=True, unique=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="forum_posts")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="forum_posts") # noqa
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=1)
-    likes = models.ManyToManyField(User, related_name='forum_likes', blank=True)  # noqa
+    likes = models.ManyToManyField(User, related_name='forum_likes', blank=True) # noqa
 
     class Meta:
         '''meta class sets descending order'''
@@ -33,8 +32,8 @@ class Post(models.Model):
 
 class Comment(models.Model):
     '''comment details'''
-    post = models.ForeignKey(
-        Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments') # noqa
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=150)
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
