@@ -26,7 +26,7 @@
 <body class="d-flex flex-column h-100 main-bg">
 
   <!-- Navigation -->
-  <nav class="navbar green">
+  <nav class="navbar banner-highlight">
     <div class="container-fluid">
 
       
@@ -50,7 +50,7 @@
           <!-- Nav links for authenticated users -->
           {% if user.is_authenticated %}
           <li class="nav-item active">
-            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">View your profile</a>
+            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-white a-right" href="{% url 'account_logout' %}">Logout</a>
@@ -89,7 +89,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer mt-auto py-3 green">
+  <footer class="footer mt-auto py-3 banner-highlight">
     <p class="m-0 text-center text-white">Copyright &copy; Gina Nikroo <script>
         document.write(new Date().getFullYear())
       </script>

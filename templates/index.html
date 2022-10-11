@@ -37,8 +37,8 @@
                     </a>
                     <hr>
                     <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
-                            class="pink fa-regular fa-heart"></i>
-                        {{ post.comments.count }} <i class="blue fa-regular fa-comment"></i>
+                            class="pink fas fa-heart"></i>
+                        {{ post.comments.count }} <i class="blue fas fa-comment"></i>
                     </p>                    
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
@@ -73,13 +73,13 @@
                                     {% endif %}
                                 </div>
                                 <h4 class="card-title">{{ post.title }}</h4>
-                                <p class="author-highlight text-muted">{{ post.author }}</p>
-                                <p class="text-muted h6">{{ post.created_on }}</p>
+                                <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
                             </a>
+                            <p class="tag-highlight text-muted">{{ post.label }}</p>
                             <hr>
                             <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
-                                    class="pink fa-regular fa-heart"></i> {{ post.comments.count }} <i
-                                    class="blue fa-regular fa-comment"></i>
+                                    class="pink fas fa-heart"></i> {{ post.comments.count }} <i
+                                    class="blue fas fa-comment"></i>
                             </p>
                         </div>
 
