@@ -16,6 +16,7 @@
                     {{ post.title }}
                 </h1>
                 <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
+                <p class="purple">{{ post.label }}</p>
                 {% if post.author == user %}
                 <div class="mt-1">
                     <a class="btn-post btn-sm btn-main" href="{{ 'update_post' }}">Edit</a>

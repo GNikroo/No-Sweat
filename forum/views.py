@@ -34,7 +34,7 @@ class Search(View):
 class PostList(generic.ListView):
     '''a list view of six posts per page'''
     model = Post
-    queryset = Post.objects.filter(status=1).order_by('-created_on')
+    queryset = Post.objects.all().order_by('-created_on')
     template_name = "index.html"
     paginate_by = 6
 
@@ -209,7 +209,7 @@ class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
         '''method to request important post details'''
-        queryset = Post.objects.filter(status=1)
+        queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by('created_on')
         liked = False
@@ -228,7 +228,7 @@ class PostDetail(View):
 
     def post(self, request, slug, *args, **kwargs):
         '''method to request important post details'''
-        queryset = Post.objects.filter(status=1)
+        queryset = Post.objects.all()
         post = get_object_or_404(queryset, slug=slug)
         comments = post.comments.order_by('created_on')
         liked = False

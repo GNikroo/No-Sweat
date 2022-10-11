@@ -20,6 +20,7 @@ class PostForm(forms.ModelForm):
         fields = [
             'title',
             'featured_image',
+            'label',
             'content',
         ]
         widgets = {
@@ -34,6 +35,7 @@ class UpdateForm(forms.ModelForm):
         fields = [
             'title',
             'featured_image',
+            'label',
             'content',
         ]
         widgets = {

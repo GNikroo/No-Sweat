@@ -8,7 +8,7 @@ from .models import Post, Comment
 class PostAdmin(SummernoteModelAdmin):
     '''PostAdmin Class'''
     list_display = (
-        'title', 'slug', 'status', 'author', 'created_on')
+        'title', 'label', 'author', 'created_on')
     search_fields = ['title', 'content']
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('author', 'created_on')
