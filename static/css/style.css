@@ -49,6 +49,7 @@ body {
 
 .no-border {
     border: none;
+    text-align: left;
     background-color: transparent;
 }
 

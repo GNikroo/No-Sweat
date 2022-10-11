@@ -16,7 +16,7 @@ class Search(View):
         query = request.GET.get('query', '')
 
         if query:
-            posts = Post.objects.all().filter(Q(title__icontains=query) | Q(content__icontains=query))  # noqa
+            posts = Post.objects.all().filter(Q(title__icontains=query) | Q(content__icontains=query) | Q(label__icontains=query))  # noqa
         else:
             posts = []
 

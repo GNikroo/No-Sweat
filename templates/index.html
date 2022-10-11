@@ -19,27 +19,32 @@
 
         {% if searched %}
         <h3 class="py-5">You searched for <span class="pink">{{ query }}</span>...</h3>
-        <div class="container-fluid">
+        <div class="col-12 mt-3">
             <div class="row justify-content-center">
                 {% for post in posts %}
                 <div class="col-md-4 col-sm-12">
-                    <a href="{% url 'post_detail' post.slug %}" class="post-link">
-                        <div class="image-container">
-                            {% if "placeholder" in post.featured_image.url %}
-                            <img class="thumbnail" alt="default photo of colorful kettlebells" src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
-                            {% else %}
-                            <img class="thumbnail" alt="user uploaded image" src=" {{ post.featured_image.url }} ">
-                            {% endif %}
+                    <div class="mb-4">
+                        <div class="text-left no-border card-body">
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
+                                <div class="image-container">
+                                    {% if "placeholder" in post.featured_image.url %}
+                                    <img class="thumbnail" alt="default photo of colorful kettlebells" 
+                                        src="https://images.pexels.com/photos/221247/pexels-photo-221247.jpeg">
+                                    {% else %}
+                                    <img class="thumbnail" alt="user uploaded image" src=" {{ post.featured_image.url }} ">
+                                    {% endif %}
+                                </div>
+                                <h4 class="card-title">{{ post.title }}</h4>
+                                <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
+                            </a>
+                            <p class="tag-highlight text-muted">{{ post.label }}</p>
+                            <hr>
+                            <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
+                                    class="pink fa-regular fa-heart"></i> {{ post.comments.count }} <i
+                                    class="blue fa-regular fa-comment"></i>
+                            </p>
                         </div>
-                        <h4 class="card-title">{{ post.title }}</h4>
-                        <p class="author-highlight text-muted">{{ post.author }}</p>
-                        <p class="text-muted h6">{{ post.created_on }}</p>
-                    </a>
-                    <hr>
-                    <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
-                            class="pink fas fa-heart"></i>
-                        {{ post.comments.count }} <i class="blue fas fa-comment"></i>
-                    </p>                    
+                    </div>                   
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
                 <div>
