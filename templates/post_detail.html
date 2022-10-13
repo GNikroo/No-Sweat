@@ -16,7 +16,14 @@
                     {{ post.title }}
                 </h1>
                 <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
-                <p class="tag-highlight text-muted">{{ post.label }}</p>
+
+                <!-- Tag Form as Link -->
+                <form class="d-inline" method="get" role="link" action="/tag_search/">
+                    <input type="hidden" for="label" name="queryset" value="{{ post.label }}">
+                    <button class="btn-tag d-none d-md-inline" id="label" type="submit">{{ post.label }}</button>
+                    {% csrf_token %}
+                </form>
+
                 {% if post.author == user %}
                 <div class="mt-1">
                     <a class="btn-post btn-sm btn-main" href="{{ 'update_post' }}">Edit</a>

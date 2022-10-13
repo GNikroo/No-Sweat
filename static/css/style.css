@@ -112,6 +112,15 @@ body {
     width: 500px;
 }
 
+.btn-tag {
+    background-color: transparent;
+    border: none;
+    color: #118AB2;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 0;
+}
+
 .btn-main {
     background-color: #11c697;
     border: none;

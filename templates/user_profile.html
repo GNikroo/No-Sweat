@@ -35,7 +35,14 @@
                                 <h4 class="card-title">{{ post.title }}</h4>
                                 <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
                             </a>
-                            <p class="tag-highlight text-muted">{{ post.label }}</p>
+                            
+                            <!-- Tag Form as Link -->
+                            <form class="d-inline" method="get" role="link" action="/tag_search/">
+                                <input type="hidden" for="label" name="queryset" value="{{ post.label }}">
+                                <button class="btn-tag d-none d-md-inline" id="label" type="submit">{{ post.label }}</button>
+                                {% csrf_token %}
+                            </form>
+
                             <hr>
                             <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
                                     class="pink fa-regular fa-heart"></i> {{ post.comments.count }} <i

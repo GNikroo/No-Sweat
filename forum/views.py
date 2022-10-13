@@ -60,6 +60,23 @@ class UserPostList(View):
         )
 
 
+class TagSearch(View):
+    def get(self, request):
+        """..."""
+        queryset = request.GET.get('queryset', '')
+        posts = Post.objects.filter(Q(label__icontains=queryset))
+
+        return render(
+            request,
+            "tag_search.html",
+            {
+                "queryset": queryset,
+                "posts": posts,
+                "tag_request": True,
+            },
+        )
+
+
 class AddPost(View):
     '''...'''
     def get(self, request, *args, **kwargs):
