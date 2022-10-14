@@ -9,7 +9,7 @@
         <h3 class="blue py-3"> {{ user.username }}</h3>
         {% if user.is_authenticated %}
         <div>
-            <a class="btn-post btn-main" href="{% url 'add_post' %}">Add a post</a>
+            <a class="btn-main" href="{% url 'add_post' %}">Add a post</a>
         </div>
         {% endif %}
 

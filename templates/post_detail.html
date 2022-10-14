@@ -26,8 +26,8 @@
 
                 {% if post.author == user %}
                 <div class="mt-1">
-                    <a class="btn-post btn-sm btn-main" href="{{ 'update_post' }}">Edit</a>
-                    <a class="btn-post btn-sm btn btn-danger" href="{{ 'delete_post' }}">Delete</a>
+                    <a class="btn-sm btn-main" href="{{ 'update_post' }}">Edit</a>
+                    <a class="btn-sm btn btn-danger" href="{{ 'delete_post' }}">Delete</a>
                 </div>
                 {% endif %}
                 <div class="mt-3">
@@ -70,8 +70,8 @@
                         {{ comment.name }}
                         {% if comment.name == user.username %}
                         <span class="mt-1">
-                            <a class="btn-post btn-sm btn-main" href="{% url 'update_comment' post.slug comment.id %}">Edit</a>
-                            <a class="btn-post btn-sm btn btn-danger" href="{% url 'delete_comment' post.slug comment.id %}">Delete</a>
+                            <a class="btn-sm btn-main" href="{% url 'update_comment' post.slug comment.id %}">Edit</a>
+                            <a class="btn-sm btn btn-danger" href="{% url 'delete_comment' post.slug comment.id %}">Delete</a>
                         </span>
                         {% endif %}
                         <span class="text-muted font-weight-normal">
