@@ -8,6 +8,7 @@ To open links in a new browser tab, press CTRL + Click.
 * [User Experience Design (UX)](#ux)
     * [Strategy](#strategy)
         * [Site Functionality](#site-functionality)
+            * [Future Functionality](#future-functionality)
     * [Scope](#scope)
         * [Features](#features)
     * [Structure](#structure)
@@ -50,7 +51,25 @@ To open links in a new browser tab, press CTRL + Click.
 * As a **Site Admin** I can **remove comments and posts** so that **I can filter out objectionable content**. 
 
 #### Site Functionality 
-The goal of this app is to provide a judgement free space place for those interested in fitness to connect with others who have similar goals, interest, and/or experience. Unauthorized users can choose to simply observe with access to read posts and comments. Users can create an account to create their own posts or comment on posts. Users can also edit or delete either posts or comments they’ve made. 
+The goal of this app is to provide a judgement free space place for those interested in fitness to connect with others who have similar goals, interest, and/or experience. Unauthorized users can choose to simply observe with access to read posts and comments. Users can create an account to create their own posts or comment on posts. Users can also edit or delete either posts or comments they’ve made.
+
+##### Future Functionality
+User stories to build future functionality:
+* As a **Site User** I can **choose to follow topics** so that **I can read content that might interest me**.
+
+* As a **Site User** I can **search for and view other creator's profiles** so that **I can determine whether to follow them or not**.
+
+* As a **Site User** I can **follow chosen posters** so that **I can read content that interests me**.
+
+* As a **Site User** I can **view a list of suggested posters** so that **I can view a post list relevant to my interests**.
+
+* As a **Site User** I can **create draft posts** so that **I can finish writing the content later**.
+
+* As a **Site User** I can **search by user profile** so that **I can connect to users I am interested in**.
+
+* As a **Site User** I can **share a post** so that **others can access a post**.
+
+* As a **Site User** I can **register and login with a social media account** so that **I don't have to keep track of multiple plasswords or worry about account security**.
 
 ### Scope 
 #### Features  
@@ -136,18 +155,18 @@ User Stories: Acceptance Criteria: Implementation
 * **Implementation:**
 * Admin’s have access to the admin portal where all posts are visible and editable. From there, an admin can delete offensive or inappropriate comments and posts.
 
-## Future Functionality
-* User stories to build future functionality:
-    * As a **Site User** I can **choose to follow topics** so that **I can read content that might interest me**. 
-    * As a **Site User** I can **search for and view other creator's profiles** so that **I can determine whether to follow them or not**. 
-    * As a **Site User** I can **follow chosen posters** so that **I can read content that interests me**. 
-    * As a **Site User** I can **view a list of suggested posters** so that **I can view a post list relevant to my interests**.
-    * As a **Site User** I can **tag my post** so that **users who follow those topics will see my post**. 
-    * As a **Site User** I can **click on tag links** so that **I can quickly choose which posts suit my interest in the moment**.
-    * As a **Site User** I can **create draft posts** so that **I can finish writing the content later**. 
-    * As a **Site User** I can **search by user profile** so that **I can connect to users I am interested in**. 
-    * As a **Site User** I can **share a post** so that **others can access a post**.
-    * As a **Site User** I can **register and login with a social media account** so that **I don't have to keep track of multiple plasswords or worry about account security**.
+New Features Oct 14, 2022
+> As a Site User I can tag my post so that users who follow those topics will see my post.
+* **Acceptance Criteria:**
+* Users should be able to choose to apply a label to their posts in order to reach a wider audience.
+* **Implementation:**
+* The add post form has an option to select a label. It can also be added at a later time through editing the post.
+
+> As a Site User I can click on tag links so that I can quickly choose which posts suit my interest in the moment.
+* **Acceptance Criteria:**
+* Tags should be easy to find and clickable to generate a list of posts that share the same topic.
+* **Implementation:**
+* Each label is visible in the html via a button which, when pressed, directs the user to all posts sharing the same label.
 
 ### Skeleton
 * Wireframes
