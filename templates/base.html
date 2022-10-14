@@ -32,8 +32,8 @@
       
       <div class="justify-content-start">
         <a class="nav-link-white navbar-brand" data-value="home" href="{% url 'home' %}">No Sweat!</a>
-                <!-- Search bar -->
 
+        <!-- Search bar -->
         <form class="d-inline" method="get" role="search" action="/search/">
           <input class="rounded border-0 search-field" type="search" name="query" placeholder="Search...">
           <button class="btn-main d-none d-md-inline" type="submit"><i class="fas fa-search"></i></button>
@@ -50,7 +50,7 @@
           <!-- Nav links for authenticated users -->
           {% if user.is_authenticated %}
           <li class="nav-item active">
-            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">Profile</a>
+            <a class="nav-link-white a-right" href="{% url 'user_profile' %}">{{ user.username }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link-white a-right" href="{% url 'account_logout' %}">Logout</a>
