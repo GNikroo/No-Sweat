@@ -5,7 +5,9 @@ from cloudinary.models import CloudinaryField
 
 
 class Post(models.Model):
-    '''post details'''
+    '''
+    Post model.
+    '''
     TAG_CHOICES = [
         ('aerial', 'Aerial'),
         ('barre', 'Barre'),
@@ -33,19 +35,21 @@ class Post(models.Model):
     likes = models.ManyToManyField(User, related_name='forum_likes', blank=True) # noqa
 
     class Meta:
-        '''meta class sets descending order'''
+        '''Meta class sets descending order.'''
         ordering = ['-created_on']
 
     def __str__(self):
         return self.title
 
     def number_of_likes(self):
-        '''generates the number of likes per post'''
+        '''Generates the number of likes per post.'''
         return self.likes.count()
 
 
 class Comment(models.Model):
-    '''comment details'''
+    '''
+    Comment model.
+    '''
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments') # noqa
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=150)
@@ -53,7 +57,7 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        '''meta class sets ascending order'''
+        '''Meta class sets ascending order.'''
         ordering = ['created_on']
 
     def __str__(self):
