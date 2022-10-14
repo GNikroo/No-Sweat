@@ -248,7 +248,7 @@ class UpdateComment(View):
         comment_obj = Comment.objects.get(pk=comment_id)
         update_comment_form = UpdateCommentForm(request.POST, instance=comment_obj)  # noqa
         if update_comment_form.is_valid():
-            if comment_obj.owner == request.user:
+            if comment_obj.name == request.user.username:
                 update_comment_form.instance.owner = request.user
                 comment_obj = update_comment_form.save(commit=False)
                 update_comment_form.comment = comment_obj

@@ -254,6 +254,7 @@ Once finished, a registered user can:
 * Following deployment:
     * A bug has been found when attempting to retrieve a forgotten password. Removed the broken link and will include it in future additional functionality.
     * CSS failed to load and produced error: MIME type ('text/html') is not a supported stylesheet MIME type. After some research I had turned debug on while fixing some CSS and redirects. I pushed the app without changing debug back to False. Once I did so, the CSS loaded as expected.
+    * When updating docstrings, I discovered comments could no longer be updated. Fixed by comparing the comment object's owner name with the requesting user's username when authenticating.
 
 ## Deployment  
 * My site was deployed to [Heroku](https://no-sweat-fitforum.herokuapp.com/). After creating a secure environment, I created an app on Heroku.
