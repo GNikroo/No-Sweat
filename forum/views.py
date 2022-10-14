@@ -64,7 +64,7 @@ class TagSearch(View):
     def get(self, request):
         """..."""
         queryset = request.GET.get('queryset', '')
-        posts = Post.objects.filter(Q(label__icontains=queryset))
+        posts = Post.objects.filter(label__icontains=queryset)
 
         return render(
             request,
