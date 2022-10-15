@@ -35,7 +35,8 @@
                                     {% endif %}
                                 </div>
                                 <h4 class="card-title">{{ post.title }}</h4>
-                                <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
+                                <p class="author-highlight text-muted mb-0">{{ post.author }}</p>
+                                <p class="author-highlight text-muted mb-1">{{ post.created_on }}</p>
                             </a>
 
                             <!-- Tag Form as Link -->
@@ -45,7 +46,7 @@
                                 {% csrf_token %}
                             </form>
 
-                            <hr>
+                            <hr class="my-1">
                             <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
                                     class="pink fa-regular fa-heart"></i> {{ post.comments.count }} <i
                                     class="blue fa-regular fa-comment"></i>
@@ -85,17 +86,18 @@
                                     {% endif %}
                                 </div>
                                 <h4 class="card-title">{{ post.title }}</h4>
-                                <p class="author-highlight text-muted">{{ post.author }} &#9679; {{ post.created_on }}</p>
+                                <p class="author-highlight text-muted mb-0">{{ post.author }}</p>
+                                <p class="author-highlight text-muted mb-1">{{ post.created_on }}</p>
                             </a>
                             
                             <!-- Tag Form as Link -->
                             <form class="d-inline" method="get" role="link" action="/tag_search/">
                                 <input type="hidden" for="label" name="queryset" value="{{ post.label }}">
-                                <button class="btn-tag d-none d-md-inline" id="label" type="submit">{{ post.label }}</button>
+                                <button class="btn-tag d-inline" id="label" type="submit">{{ post.label }}</button>
                                 {% csrf_token %}
                             </form>
 
-                            <hr>
+                            <hr class="my-1">
                             <p class="card-text text-muted h6"> {{ post.number_of_likes }} <i
                                     class="pink fas fa-heart"></i> {{ post.comments.count }} <i
                                     class="blue fas fa-comment"></i>
