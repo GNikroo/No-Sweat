@@ -9,6 +9,7 @@ class Post(models.Model):
     Post model.
     '''
     TAG_CHOICES = [
+        ('healthy eating', 'Healthy Eating'),
         ('aerial', 'Aerial'),
         ('barre', 'Barre'),
         ('bootcamp', 'Bootcamp'),
