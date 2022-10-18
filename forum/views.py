@@ -1,6 +1,7 @@
 '''Views for No Sweat fitforum'''
 from django.shortcuts import render, get_object_or_404, reverse
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from django.db.models import Q
@@ -73,6 +74,10 @@ class UserPostList(View):
 
 
 class TagSearch(View):
+    '''
+    Displays corresponding labels when
+    button is clicked.
+    '''
     def get(self, request):
         '''
         Retrieves a queryset via a form
@@ -94,7 +99,7 @@ class TagSearch(View):
         )
 
 
-class AddPost(View):
+class AddPost(LoginRequiredMixin, View):
     '''
     Displays and submits the form to add an original post.
     '''
@@ -131,7 +136,7 @@ class AddPost(View):
         return HttpResponseRedirect('/user_profile')
 
 
-class UpdatePost(View):
+class UpdatePost(LoginRequiredMixin, View):
     '''Displays and submits the form to update a post.'''
     def get(self, request, *args, **kwargs):
         '''
@@ -183,7 +188,7 @@ class UpdatePost(View):
         return HttpResponseRedirect('/user_profile')
 
 
-class DeletePost(View):
+class DeletePost(LoginRequiredMixin, View):
     '''Displays and submits the form to delete a post.'''
     def get(self, request, *args, **kwargs):
         '''
@@ -209,7 +214,7 @@ class DeletePost(View):
         return HttpResponseRedirect('/user_profile')
 
 
-class UpdateComment(View):
+class UpdateComment(LoginRequiredMixin, View):
     '''Displays and submits the form to update a comment.'''
     def get(self, request, **kwargs):
         '''
@@ -261,7 +266,7 @@ class UpdateComment(View):
         return HttpResponseRedirect(f"/{slug}")
 
 
-class DeleteComment(View):
+class DeleteComment(LoginRequiredMixin, View):
     '''Displays and submits the form to delete a comment.'''
     def get(self, request, *args, **kwargs):
         '''
