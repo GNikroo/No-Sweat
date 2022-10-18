@@ -175,12 +175,13 @@ class UpdatePost(LoginRequiredMixin, View):
         post_object = Post.objects.get(slug=slug)
         update_form = UpdateForm(request.POST, request.FILES, instance=post_object)  # noqa
         if update_form.is_valid():
-            update_form.instance.author = request.user
-            post = update_form.save(commit=False)
-            post.slug = slugify(post.title)
-            update_form.post = post
-            update_form.save()
-            messages.success(request, "Your post has been updated!")
+            if post_object.author == request.user.username:
+                update_form.instance.author = request.user
+                post = update_form.save(commit=False)
+                post.slug = slugify(post.title)
+                update_form.post = post
+                update_form.save()
+                messages.success(request, "Your post has been updated!")
         else:
             update_form = UpdateForm()
             messages.error(request, 'Invalid form submission.')
