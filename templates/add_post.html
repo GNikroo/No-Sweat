@@ -5,8 +5,7 @@
     <div class="col-md-10 col-xl-6 my-2">
         <div class="card-body">
 
-            <h3>Add an entry:</h3>
-            <p>Posting as: <span class="pink">{{ user.username }}</span></p>
+            <h3>Add an entry as <span class="pink">{{ user.username }}</span></h3>
             <form method="POST" style="margin-top: 1.3em;" enctype='multipart/form-data'>
                 {{ post_form | crispy }}
                 {% csrf_token %}
